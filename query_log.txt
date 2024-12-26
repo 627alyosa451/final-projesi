@@ -1,0 +1,8 @@
+Sorgulama Logları:
+URL: https://www.google.com, Durum: Erişilebilir! Durum kodu: 200
+URL: https://invalid-url.com, Durum: Erişim başarısız: HTTPSConnectionPool(host='invalid-url.com', port=443): Max retries exceeded...
+URL: https://idx.google.com/final-projesi-8158007, Durum: Erişilebilir! Durum kodu: 200
+URL: jhkglj, Durum: Erişim başarısız: Invalid URL 'jhkglj': No scheme supplied. Perhaps you meant https://jhkglj?
+URL: https://idx.google.com/final-projesi-8158007, Durum: Erişilebilir! Durum kodu: 200
+URL: https://idx.google.com/final-projesi-8158007, Durum: Erişilebilir! Durum kodu: 200
+URL: https://idx.google.com/final-projesi-8158007, Durum: Erişilebilir! Durum kodu: 200
