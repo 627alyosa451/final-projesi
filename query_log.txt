@@ -1,8 +1,3 @@
-Sorgulama Logları:
-URL: https://www.google.com, Durum: Erişilebilir! Durum kodu: 200
-URL: https://invalid-url.com, Durum: Erişim başarısız: HTTPSConnectionPool(host='invalid-url.com', port=443): Max retries exceeded...
-URL: https://idx.google.com/final-projesi-8158007, Durum: Erişilebilir! Durum kodu: 200
-URL: jhkglj, Durum: Erişim başarısız: Invalid URL 'jhkglj': No scheme supplied. Perhaps you meant https://jhkglj?
-URL: https://idx.google.com/final-projesi-8158007, Durum: Erişilebilir! Durum kodu: 200
-URL: https://idx.google.com/final-projesi-8158007, Durum: Erişilebilir! Durum kodu: 200
-URL: https://idx.google.com/final-projesi-8158007, Durum: Erişilebilir! Durum kodu: 200
+youtube: Erişilebilir! Durum kodu: 200
+facebook: Erişim başarısız: HTTPSConnectionPool(host='xn--ldfsjfl-8pb.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7b00517b2f90>: Failed to resolve 'xn--ldfsjfl-8pb.com' ([Errno -2] Name or service not known)"))
+google: Erişilebilir! Durum kodu: 200

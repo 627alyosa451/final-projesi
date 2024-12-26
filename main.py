@@ -1,6 +1,8 @@
 import os
 import xml.etree.ElementTree as ET
+import xml.dom.minidom
 import requests
+from datetime import datetime
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
@@ -11,36 +13,49 @@ TXT_FILE = "query_log.txt"
 
 # XML dosyasını oluştur
 def create_xml_file():
-    if not os.path.exists(XML_FILE):
+    if not os.path.exists(XML_FILE) or os.stat(XML_FILE).st_size == 0:
         root = ET.Element("urls")
         tree = ET.ElementTree(root)
-        tree.write(XML_FILE)
+        tree.write(XML_FILE, encoding="utf-8", xml_declaration=True)
+
+# XML'i düzgün bir formatta yaz
+def write_pretty_xml(tree, file_path):
+    xml_str = ET.tostring(tree.getroot(), encoding="unicode")
+    pretty_xml = xml.dom.minidom.parseString(xml_str).toprettyxml(indent="  ")
+    with open(file_path, "w", encoding="utf-8") as f:
+        f.write(pretty_xml)
 
 # TXT dosyasını oluştur
 def create_txt_file():
     if not os.path.exists(TXT_FILE):
-        with open(TXT_FILE, "w") as f:
+        with open(TXT_FILE, "w", encoding="utf-8") as f:
             f.write("Sorgulama Logları:\n")
 
-# URL'yi XML dosyasına kaydet
-def add_url_to_xml(name, url):
-    if not os.path.exists(XML_FILE):
+# XML dosyasına yeni bir kayıt ekle
+def add_url_to_xml(data):
+    if not os.path.exists(XML_FILE) or os.stat(XML_FILE).st_size == 0:
         create_xml_file()
-    tree = ET.parse(XML_FILE)
-    root = tree.getroot()
-    url_element = ET.SubElement(root, "url")
-    name_element = ET.SubElement(url_element, "name")
-    name_element.text = name
-    link_element = ET.SubElement(url_element, "link")
-    link_element.text = url
-    tree.write(XML_FILE)
 
-# Sorgulama sonuçlarını TXT dosyasına kaydet
-def log_query_to_txt(url, status):
-    if not os.path.exists(TXT_FILE):
-        create_txt_file()
-    with open(TXT_FILE, "a") as f:
-        f.write(f"URL: {url}, Durum: {status}\n")
+    try:
+        tree = ET.parse(XML_FILE)
+        root = tree.getroot()
+    except ET.ParseError:
+        create_xml_file()
+        tree = ET.parse(XML_FILE)
+        root = tree.getroot()
+
+    url_element = ET.SubElement(root, "url")
+    for key, value in data.items():
+        element = ET.SubElement(url_element, key)
+        element.text = value
+
+    write_pretty_xml(tree, XML_FILE)
+
+# TXT dosyasına sorgulama sonuçlarını kaydet
+def log_query_to_txt(name, status):
+    create_txt_file()
+    with open(TXT_FILE, "a", encoding="utf-8") as f:
+        f.write(f"{name}: {status}\n")
 
 @app.route("/")
 def index():
@@ -48,25 +63,30 @@ def index():
 
 @app.route("/submit", methods=["POST"])
 def submit():
-    name = request.form.get("name")
-    url = request.form.get("url")
-    add_url_to_xml(name, url)
-    return render_template("success.html", name=name)
+    kaynakID = request.form.get("kaynakID")
+    kaynakAdi = request.form.get("kaynakAdi")
+    kaynakDetay = request.form.get("kaynakDetay")
+    kaynakURL = request.form.get("kaynakURL")
+    kaynakZamanDamgasi = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-@app.route("/query")
-def query():
-    return render_template("query.html")
-
-@app.route("/query_result", methods=["POST"])
-def query_result():
-    url = request.form.get("url")
     try:
-        response = requests.get(url, timeout=5)
+        response = requests.get(kaynakURL, timeout=5)
         status = f"Erişilebilir! Durum kodu: {response.status_code}"
     except requests.exceptions.RequestException as e:
         status = f"Erişim başarısız: {str(e)}"
-    log_query_to_txt(url, status)
-    return render_template("query_result.html", url=url, status=status)
+
+    data = {
+        "kaynakID": kaynakID,
+        "kaynakAdi": kaynakAdi,
+        "kaynakDetay": kaynakDetay,
+        "kaynakURL": kaynakURL,
+        "kaynakZamanDamgasi": kaynakZamanDamgasi,
+        "status": status
+    }
+    add_url_to_xml(data)
+    log_query_to_txt(kaynakAdi, status)
+
+    return render_template("success.html", data=data)
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -1,1 +1,79 @@
-<urls><url><name>youtube</name><link>https://youtu.be/5w9tJ--L3-w?si=jmR4Zyoww3zBQeoH</link></url></urls>
+<?xml version="1.0" ?>
+<urls>
+  
+  
+  
+  
+  <url>
+    
+    
+    
+    
+    <kaynakID>1</kaynakID>
+    
+    
+    
+    
+    <kaynakAdi>youtube</kaynakAdi>
+    
+    
+    
+    
+    <kaynakDetay>sdafdasf</kaynakDetay>
+    
+    
+    
+    
+    <kaynakURL>https://www.youtube.com/</kaynakURL>
+    
+    
+    
+    
+    <kaynakZamanDamgasi>2024-12-26 12:05:53</kaynakZamanDamgasi>
+    
+    
+    
+    
+    <status>Erişilebilir! Durum kodu: 200</status>
+    
+    
+  
+  
+  </url>
+  
+  
+
+  
+  <url>
+    
+    
+    <kaynakID>2</kaynakID>
+    
+    
+    <kaynakAdi>facebook</kaynakAdi>
+    
+    
+    <kaynakDetay>sosyal medya adresi</kaynakDetay>
+    
+    
+    <kaynakURL>https://şldfsjfl.com</kaynakURL>
+    
+    
+    <kaynakZamanDamgasi>2024-12-26 12:11:11</kaynakZamanDamgasi>
+    
+    
+    <status>Erişim başarısız: HTTPSConnectionPool(host='xn--ldfsjfl-8pb.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(&quot;&lt;urllib3.connection.HTTPSConnection object at 0x7b00517b2f90&gt;: Failed to resolve 'xn--ldfsjfl-8pb.com' ([Errno -2] Name or service not known)&quot;))</status>
+    
+  
+  </url>
+  
+
+  <url>
+    <kaynakID>2</kaynakID>
+    <kaynakAdi>google</kaynakAdi>
+    <kaynakDetay>jhljkh</kaynakDetay>
+    <kaynakURL>https://www.google.co.uk/</kaynakURL>
+    <kaynakZamanDamgasi>2024-12-26 12:11:46</kaynakZamanDamgasi>
+    <status>Erişilebilir! Durum kodu: 200</status>
+  </url>
+</urls>

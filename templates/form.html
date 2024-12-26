@@ -3,20 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URL Kayıt Formu</title>
+    <title>Kullanıcı Bilgileri Formu</title>
 </head>
 <body>
-    <h1>URL Kayıt Formu</h1>
-    <form action="/submit" method="post">
-        <label for="name">Ad:</label><br>
-        <input type="text" id="name" name="name" required><br><br>
-        
-        <label for="url">URL:</label><br>
-        <input type="url" id="url" name="url" required><br><br>
-        
-        <button type="submit">Kaydet</button>
+    <h1>Kaynak Bilgisi Ekle</h1>
+    <form method="POST" action="/submit">
+        <label for="kaynakID">Kaynak ID:</label>
+        <input type="text" id="kaynakID" name="kaynakID" required><br><br>
+
+        <label for="kaynakAdi">Kaynak Adı:</label>
+        <input type="text" id="kaynakAdi" name="kaynakAdi" required><br><br>
+
+        <label for="kaynakDetay">Kaynak Detay:</label>
+        <textarea id="kaynakDetay" name="kaynakDetay" required></textarea><br><br>
+
+        <label for="kaynakURL">Kaynak URL:</label>
+        <input type="url" id="kaynakURL" name="kaynakURL" required><br><br>
+
+        <button type="submit">Ekle</button>
     </form>
-    <br>
-    <a href="/query">Sorgulama Sayfası</a>
 </body>
 </html>

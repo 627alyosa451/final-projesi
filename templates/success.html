@@ -6,8 +6,13 @@
     <title>Kayıt Başarılı</title>
 </head>
 <body>
-    <h1>Başarılı!</h1>
-    <p>{{ name }} adlı URL kaydedildi.</p>
-    <a href="/">Yeni bir URL kaydet</a> | <a href="/query">Sorgulama Sayfası</a>
+    <h1>Kayıt Başarılı!</h1>
+    <p>ID: {{ data.kaynakID }}</p>
+    <p>Adı: {{ data.kaynakAdi }}</p>
+    <p>Detay: {{ data.kaynakDetay }}</p>
+    <p>URL: {{ data.kaynakURL }}</p>
+    <p>Durum: {{ data.status }}</p>
+    <p>Zaman: {{ data.kaynakZamanDamgasi }}</p>
+    <a href="/">Yeni Kayıt Ekle</a>
 </body>
 </html>
