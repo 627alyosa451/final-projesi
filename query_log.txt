@@ -1,3 +1,12 @@
 youtube: Erişilebilir! Durum kodu: 200
 facebook: Erişim başarısız: HTTPSConnectionPool(host='xn--ldfsjfl-8pb.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7b00517b2f90>: Failed to resolve 'xn--ldfsjfl-8pb.com' ([Errno -2] Name or service not known)"))
 google: Erişilebilir! Durum kodu: 200
+youtube: Erişilebilir! Durum kodu: 200
+google: Erişilebilir! Durum kodu: 200
+google: Erişilebilir! Durum kodu: 200
+2: Erişim başarısız: HTTPSConnectionPool(host='ww.sdafsdf', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7ac944c02510>: Failed to resolve 'ww.sdafsdf' ([Errno -2] Name or service not known)"))
+2: Erişim başarısız: HTTPSConnectionPool(host='ww.sdafsdf', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7bd1a2ac1250>: Failed to resolve 'ww.sdafsdf' ([Errno -2] Name or service not known)"))
+2: Erişim başarısız: HTTPSConnectionPool(host='ww.sdafsdf', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7bd1a2af3a10>: Failed to resolve 'ww.sdafsdf' ([Errno -2] Name or service not known)"))
+2: Erişim başarısız: HTTPSConnectionPool(host='ww.sdafsdf', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7bc71bf628d0>: Failed to resolve 'ww.sdafsdf' ([Errno -2] Name or service not known)"))
+2: Erişim başarısız: HTTPSConnectionPool(host='ww.sdafsdf', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7bc71ad41790>: Failed to resolve 'ww.sdafsdf' ([Errno -2] Name or service not known)"))
+2: Erişim başarısız: HTTPSConnectionPool(host='ww.sdafsdf', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7bc71ad55ed0>: Failed to resolve 'ww.sdafsdf' ([Errno -2] Name or service not known)"))

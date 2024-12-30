@@ -1,6 +1,5 @@
 import os
 import xml.etree.ElementTree as ET
-import xml.dom.minidom
 import requests
 from datetime import datetime
 from flask import Flask, render_template, request
@@ -17,13 +16,6 @@ def create_xml_file():
         root = ET.Element("urls")
         tree = ET.ElementTree(root)
         tree.write(XML_FILE, encoding="utf-8", xml_declaration=True)
-
-# XML'i düzgün bir formatta yaz
-def write_pretty_xml(tree, file_path):
-    xml_str = ET.tostring(tree.getroot(), encoding="unicode")
-    pretty_xml = xml.dom.minidom.parseString(xml_str).toprettyxml(indent="  ")
-    with open(file_path, "w", encoding="utf-8") as f:
-        f.write(pretty_xml)
 
 # TXT dosyasını oluştur
 def create_txt_file():
@@ -45,11 +37,11 @@ def add_url_to_xml(data):
         root = tree.getroot()
 
     url_element = ET.SubElement(root, "url")
-    for key, value in data.items():
+    for key, value in data.items(): #data sözlüğünden key ve value alma
         element = ET.SubElement(url_element, key)
         element.text = value
 
-    write_pretty_xml(tree, XML_FILE)
+    tree.write(XML_FILE, encoding='utf-8', xml_declaration=True) #Verileri kaydetme
 
 # TXT dosyasına sorgulama sonuçlarını kaydet
 def log_query_to_txt(name, status):
