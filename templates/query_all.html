@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tüm Sorgulama Sonuçları</title>
+</head>
+<body>
+    <h1>Tüm Sorgulama Sonuçları</h1>
+    <table border="1">
+        <tr>
+            <th>Kaynak Adı</th>
+            <th>Kaynak URL</th>
+            <th>Durum</th>
+        </tr>
+        {% for result in results %}
+        <tr>
+            <td>{{ result.kaynakAdi }}</td>
+            <td>{{ result.kaynakURL }}</td>
+            <td>{{ result.status }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

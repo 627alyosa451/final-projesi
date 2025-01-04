@@ -1,26 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kullanıcı Bilgileri Formu</title>
+    <title>Kayıt Formu</title>
 </head>
 <body>
-    <h1>Kaynak Bilgisi Ekle</h1>
-    <form method="POST" action="/submit">
+    <h1>Kayıt Formu</h1>
+    <form action="/submit" method="post">
         <label for="kaynakID">Kaynak ID:</label>
-        <input type="text" id="kaynakID" name="kaynakID" required><br><br>
-
+        <input type="text" name="kaynakID" required><br>
         <label for="kaynakAdi">Kaynak Adı:</label>
-        <input type="text" id="kaynakAdi" name="kaynakAdi" required><br><br>
-
+        <input type="text" name="kaynakAdi" required><br>
         <label for="kaynakDetay">Kaynak Detay:</label>
-        <textarea id="kaynakDetay" name="kaynakDetay" required></textarea><br><br>
-
+        <input type="text" name="kaynakDetay" required><br>
         <label for="kaynakURL">Kaynak URL:</label>
-        <input type="url" id="kaynakURL" name="kaynakURL" required><br><br>
-
-        <button type="submit">Ekle</button>
+        <input type="url" name="kaynakURL" required><br>
+        <button type="submit">Kaydet</button>
     </form>
+    <br>
+    <a href="/query_all">Tüm Kayıtları Sorgula</a>
 </body>
 </html>

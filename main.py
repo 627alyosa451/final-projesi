@@ -37,17 +37,43 @@ def add_url_to_xml(data):
         root = tree.getroot()
 
     url_element = ET.SubElement(root, "url")
-    for key, value in data.items(): #data sözlüğünden key ve value alma
+    for key, value in data.items():
         element = ET.SubElement(url_element, key)
         element.text = value
 
-    tree.write(XML_FILE, encoding='utf-8', xml_declaration=True) #Verileri kaydetme
+    tree.write(XML_FILE, encoding='utf-8', xml_declaration=True)
 
 # TXT dosyasına sorgulama sonuçlarını kaydet
-def log_query_to_txt(name, status):
+def log_all_queries_to_txt(results):
     create_txt_file()
     with open(TXT_FILE, "a", encoding="utf-8") as f:
-        f.write(f"{name}: {status}\n")
+        f.write(f"\nSorgulama Tarihi: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+        for result in results:
+            f.write(f"{result['kaynakAdi']} ({result['kaynakURL']}): {result['status']}\n")
+
+# XML dosyasındaki tüm kayıtları sorgula
+def query_all_urls():
+    if not os.path.exists(XML_FILE):
+        create_xml_file()
+
+    try:
+        tree = ET.parse(XML_FILE)
+        root = tree.getroot()
+    except ET.ParseError:
+        return []
+
+    results = []
+    for url_element in root.findall("url"):
+        kaynakAdi = url_element.find("kaynakAdi").text
+        kaynakURL = url_element.find("kaynakURL").text
+        try:
+            response = requests.get(kaynakURL, timeout=5)
+            status = f"Erişilebilir! Durum kodu: {response.status_code}"
+        except requests.exceptions.RequestException as e:
+            status = f"Erişim başarısız: {str(e)}"
+        results.append({"kaynakAdi": kaynakAdi, "kaynakURL": kaynakURL, "status": status})
+
+    return results
 
 @app.route("/")
 def index():
@@ -76,9 +102,14 @@ def submit():
         "status": status
     }
     add_url_to_xml(data)
-    log_query_to_txt(kaynakAdi, status)
 
     return render_template("success.html", data=data)
+
+@app.route("/query_all", methods=["GET"])
+def query_all():
+    results = query_all_urls()
+    log_all_queries_to_txt(results)
+    return render_template("query_all.html", results=results)
 
 if __name__ == "__main__":
     app.run(debug=True)
